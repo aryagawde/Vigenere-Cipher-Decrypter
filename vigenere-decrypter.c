@@ -176,11 +176,17 @@ void decryptCipherText(char* fileText, char* keyword) {
     }
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     // Open the ciphertext in read mode
     FILE *fptr;
+
+    if (argc != 2) {
+        printf("File name not entered.\n");
+        return 1;
+    }
     
-    fptr = fopen("ciphertext.txt", "r");
+    char* filename = argv[1];
+    fptr = fopen(filename, "r");
 
     if (fptr == NULL) {
         printf("No such file exists.\n");
